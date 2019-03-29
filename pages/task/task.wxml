@@ -1,0 +1,16 @@
+<view class='task-page'>
+  <view wx:for="{{taskList}}" wx:for-item="item" wx:for-index="index"    data-item="{{item}}" wx:key="index" bindtap='handleCheckDetail'>
+    <task-card taskItem="{{item}}"></task-card>
+  </view>
+
+   <view wx:if="{{!taskList.length}}">
+    <empty-content></empty-content>
+  </view>
+  <view wx:if="{{moreLoading && !!taskList.length}}">
+    <i-load-more tip="正在加载..." />
+  </view>
+  <view wx:if="{{!moreLoading && curPage >= total}}" class='no-more_data'>
+    暂无更多任务
+  </view>
+</view>
+<i-message id="message" />

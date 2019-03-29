@@ -1,0 +1,28 @@
+<!--component/taskCard/card.wxml-->
+
+
+<view class='task-card'>
+  <view class='task-progress'>
+    <text>完成次数 : {{taskItem.CompletedTimes}}/{{taskItem.Times}}</text>
+      <i-tag class="i-tags" type="border"  color="{{!!taskItem.IsFinised==1?'green':'blue'}}">
+        {{!!taskItem.IsFinised?'已完成':'进行中'}}
+      </i-tag>
+  </view>
+  <view class='task-detail'>
+    <view class="task-image">
+      <image src="../../images/taskImg.png"></image>
+    </view>
+    <view class="task-info">
+      <view class='task-info_title'>
+        <text>{{taskItem.Title}}</text>
+        <text class='task-info_integral'> + 积分{{taskItem.Integral}}分</text>
+      </view>
+      <view class='task-info_intro'>{{taskItem.Content}}</view>
+      <!-- <view class='task-info_state'>
+        <i-tag class="i-tags" color="{{!!taskItem.IsFinised==1?'green':'blue'}}">
+       {{!!taskItem.IsFinised?'已完成':'进行中'}}
+        </i-tag>　
+      </view> -->
+    </view>
+  </view>
+</view>

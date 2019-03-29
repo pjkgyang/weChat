@@ -1,0 +1,211 @@
+<!--pages/detail.wxml-->
+<wxs module="dateFr" src="../../filter/dateFilter.wxs"></wxs>
+<view class='column-page'>
+  <view class='column-tabs '>
+    <i-tabs current="{{ current }}" bindchange="handleChange">
+      <i-tab key="" title="最新"></i-tab>
+      <i-tab key="2" title="图文"></i-tab>
+      <i-tab key="0" title="视频"></i-tab>
+      <i-tab key="1" title="音频"></i-tab>
+    </i-tabs>
+  </view>
+  <!-- <view style='height:42px'></view> -->
+  <view class="fresh-ele" style='height:{{translateFresh}}px !important' wx:if="{{freshLoading}}">
+    <view class='fresh-ele_load' wx:if="{{translateScroll == 0}}">
+      <i-load-more tip="正在刷新动态..." />
+    </view>
+    <view wx:if="{{translateScroll != 0}}">
+      ↓ 松开刷新动态
+    </view>
+  </view>
+
+  <scroll-view id="scroll-wrap" class="column" style="height:calc(100% - 42px);position:absolute;transform: translateY({{translateScroll}}px)" enable-back-to-top="true" scroll-y scroll-with-animation="true" bindscroll="columnScroll" scroll-top="{{scrollTop}}"
+    lower-threshold="10" bindscrolltolower="loadMore" bindtouchstart="start_fn" bindtouchend="end_fn" bindtouchmove='touchMove'>
+
+    <view id="inner-wrap">
+      <view wx:for="{{dataList}}" wx:for-item="item" wx:for-index="index" wx:key="item">
+        <view class="column-new column-base" data-id="{{item.Id}}" data-type="{{item.Type}}" data-index="{{index}}" bindtap='handleCheckDetail'>
+          <view style='padding:5px 0' data-id="{{item.Id}}" bindtap='handleCheckDetailt'>
+            <view style='float:left'>
+              <i-tag class="i-tags" color="red" wx:if="{{item.IsTop}}">
+                置顶
+              </i-tag>
+              <text class='column-author'>{{!item.Creator?'':item.Creator}}</text>
+            </view>
+            <view class="new-top">{{dateFr.getDateDiff(item.PublishTime)}}</view>
+          </view>
+          <!-- 最新--类型 -->
+          <view wx:if="{{current == ''}}">
+            <view class="imagetext-box" wx:if="{{item.Type == '2'}}">
+              <!-- 标题 -->
+              <text class="imagetext-box-abstract">{{item.Title}}</text>
+              <view class="imagetext-box_info">
+                <!--  摘要 -->
+                <view class='info-zy'>{{item.Summary}}</view>
+                <!-- 封面图片 -->
+                <view class="info-img">
+                  <image class="imagetext-box-img" src='{{item.CoverImgUrl}}'></image>
+                </view>
+              </view>
+            </view>
+
+            <view wx:if="{{item.Type == '0' && !item.IsVid}}">
+              <view class="video-box">
+                <!-- 标题层 -->
+                <view class="video-title-box">
+                  <view class='video-title'>{{item.Title}}</view>
+                </view>
+                <view class='column-Summary'>
+                  {{item.Summary}}
+                </view>
+                <!-- 视频图片层 -->
+                <view wx:if="{{!!item.CoverImgUrl}}" data-id="{{index}}" class="video-image-box" style="display: {{ _index == index ? 'none' : 'block' }};" catchtap="videoPlay">
+                  <view class="video-cover-box">
+                    <image class="video-image" src="{{item.CoverImgUrl?item.CoverImgUrl:''}}" mode="aspectFit"></image>
+                  </view>
+                  <!-- 视频按钮 -->
+                  <image class="video-image-play" src="../../images/videoPlay.png" mode="scaleToFill"></image>
+                </view>
+
+                <!-- 视频播放层 -->
+                <video src="{{item.Content}}" data-id="{{index}}" class='video' wx:if="{{_index == index}}" objectFit='contain' autoplay='true' show-center-play-btn="false" controls></video>
+              </view>
+            </view>
+
+
+
+            <view wx:if="{{item.Type == '0' && !!item.IsVid}}">
+              <view data-playerid="{{item.Content}}" catchtap='handlePlayTxv'>
+                <txv-video vid="{{item.Content}}" playerid="{{item.Content}}" wx:if="{{!!item.Content}}" controls></txv-video>
+              </view>
+            </view>
+
+            <!-- 音频 -->
+            <view wx:if="{{item.Type == 1}}">
+              <view style='font-size:26rpx;padding:10rpx;'>
+                {{item.Title}}
+              </view>
+              <view style='font-size:22rpx;color:#999;padding:10rpx;'>
+                {{item.Summary}}
+              </view>
+              <audio style='width:100%' src="{{item.Content}}" poster="{{item.CoverImgUrl}}" name="{{name}}" author="{{item.author}}" action="{{item.audioAction}}" controls data-ite="new{{index}}" id="new{{index}}" bindplay="handlePlayAudio"></audio>
+            </view>
+
+          </view>
+
+          <!-- 图文--类型 -->
+          <view class="imagetext-box" wx:if="{{current == 2}}">
+            <text class="imagetext-box-abstract">{{item.Title}}</text>
+
+            <view class="imagetext-box_info">
+              <view class='info-zy'>{{item.Summary}}</view>
+              <view class="info-img">
+                <image class="imagetext-box-img" src='{{item.CoverImgUrl}}'></image>
+              </view>
+            </view>
+          </view>
+
+          <!-- 视频--类型 -->
+          <!-- custom-cache="false" -->
+          <view wx:if="{{current == '0'}}">
+
+            <view class="video-box" wx:if="{{!item.IsVid}}">
+              <!-- 标题层 -->
+              <view class="video-title-box">
+                <view class='video-title'>{{item.Title}}</view>
+              </view>
+              <!-- 视频图片层 -->
+              <view data-id="{{index}}" class="video-image-box" style="display: {{ _index == index ? 'none' : 'block' }};" bindtap="videoPlay">
+                <view class="video-cover-box">
+                  <image class="video-image" src="{{item.CoverImgUrl}}" mode="aspectFit">
+                  </image>
+                </view>
+                <!-- 视频按钮 -->
+                <image class="video-image-play" src="../../images/videoPlay.png" mode="scaleToFill"></image>
+              </view>
+
+              <!-- 视频播放层 -->
+              <video src="{{item.Content}}" data-id="{{index}}" class='video' wx:if="{{_index == index}}" objectFit='contain' autoplay='false' show-center-play-btn="false" show-mute-btn="true" controls title=""></video>
+            </view>
+
+            <view wx:if="{{!!item.IsVid}}">
+              <view data-playerid="{{item.Content}}" catchtap='handlePlayTxv'>
+                <txv-video vid="{{item.Content}}" playerid="{{item.Content}}" wx:if="{{!!item.Content}}" controls></txv-video>
+              </view>
+            </view>
+          </view>
+
+
+          <!-- 音频--类型-->
+          <view wx:if="{{current == '1'}}">
+            <view style='font-size:26rpx;padding:10rpx;'>
+              {{item.Title}}
+            </view>
+            <view style='font-size:22rpx;color:#999;padding:10rpx;'>
+              {{item.Summary}}
+            </view>
+            <audio style='width:100%' src="{{!item.Content?'':item.Content}}" poster="{{item.CoverImgUrl}}" name="{{name}}" author="{{!item.author?'':item.author}}" action="{{!item.audioAction?'':item.audioAction}}" controls data-id="{{index}}"></audio>
+          </view>
+          <!-- 操作按钮 -->
+          <view class="column-bottom">
+            <!-- 评论数 -->
+            <view class="column-bottom_comment" data-id="{{item.Id}}" catchtap='handleComment'>
+              <i-icon type="message" size="20" />
+              <text>{{item.Comments}}</text>
+            </view>
+            <!-- 点赞 -->
+            <view class="column-bottom_support" data-index="{{index}}" data-item="{{item}}" catchtap='handleRraise'>
+              <i-icon type="{{!!item.IsLike?'praise_fill':'praise'}}" size="20" color="{{!!item.IsLike?'#4E84E6':''}}" />
+              <text>{{item.Likes}}</text>
+            </view>
+            <!-- 浏览数 -->
+            <view class="column-bottom_see">
+              <i-icon type="browse" size="20" />
+              <text>{{item.Views}}</text>
+            </view>
+            <!-- 转发 -->
+            <view class="column-bottom_share column-bottom_moment">
+              <button data-route="1" data-index="{{index}}" open-type='share' title="转发" hover-class='none' plain>
+                <image src="../../images/wechat.png"></image>
+                <text>转发</text>
+              </button>
+            </view>
+            <!-- 朋友圈 -->
+            <view class="column-bottom_moment" data-item="{{item}}" catchtap='handleDrawPoster'>
+              <image src='../../images/moments.png'></image>
+              <text>海报</text>
+            </view>
+          </view>
+
+        </view>
+
+      </view>
+      <view wx:if="{{moreLoading}}">
+        <i-load-more tip="正在加载..." />
+      </view>
+    </view>
+    <view wx:if="{{!moreLoading && !dataList.length}}">
+      <empty-content></empty-content>
+    </view>
+    <view wx:if="{{((current == '' && newPage >= newTotal) || (current == '2' && imgTextPage >= imgTextTotal) || (current == '0' && videoPage >= videoTotal) || (current == '1' && audioPage >= audioTotal)) && !!dataList.length}}" class='no-more_data'>
+      暂无更多内容
+    </view>
+  </scroll-view>
+</view>
+
+
+<view class='poster' catchtouchmove='true' wx:if="{{show}}">
+  <view class='poster-share'>
+    <canvas canvas-id="shareCanvas" style="width:300px;height:380px"></canvas>
+  </view>
+  <view class='poster-tip' catchtap='handleSaveImg'>
+    {{isSaveImg?'已保存相册,前去分享吧~':'点击保存到相册~'}}
+  </view>
+  <view class="poster-close">
+    <view class='poster-close_dot' catchtap='handleColseImg'>
+      X
+    </view>
+  </view>
+</view>
+
+<i-message id="message" />

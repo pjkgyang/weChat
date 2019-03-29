@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "选择地址",
+  "usingComponents": {
+    "i-tag": "../../dist/tag/index",
+    "i-icon": "../../dist/icon/index",
+    "address-cadr":"../../component/address/address",
+    "i-message": "../../dist/message/index"
+  }
+}

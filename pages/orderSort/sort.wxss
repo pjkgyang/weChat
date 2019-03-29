@@ -1,0 +1,23 @@
+/* pages/orderSort/sort.wxss */
+
+.sort-page_menu{
+
+}
+.sort-page_title{
+  padding: 10px 20px;
+  border-bottom: 1px solid #dddee1;
+  font-size: 28rpx;
+  font-weight: 700;
+}
+.sort-page_menu > view{
+   width: 95%;
+   height:130rpx;
+  background: linear-gradient(to right bottom,rgba(164, 183, 199,0.2),rgba(57, 118, 187,0.3));
+  margin: 10px auto 0;
+  border-radius: 10px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+  font-size: 28rpx;
+  color: #80848f
+}

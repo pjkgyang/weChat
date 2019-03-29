@@ -1,0 +1,60 @@
+/* pages/orderDetail/orderdetail.wxss */
+
+.orderDetail-page {
+  background: #f5f5f5;
+}
+
+.orderDetail-page>view {
+  margin-bottom: 10px;
+  background: #fff;
+  font-size: 26rpx;
+}
+
+.orderDetail-top .orderDetail-zt {
+  background: linear-gradient(to right,#4E84E6, #4E84E6);
+  padding: 10px;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.orderDetail-top .orderDetail-zt image{
+  width: 32px;
+  height: 32px;
+}
+
+.orderDetail-top .orderDetail-address {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+.orderDetail-top .orderDetail-address .name{
+ font-weight: 700;
+ color: #333;
+}
+/* 商品详情  */
+
+.orderDetail-center{
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+.orderDetail-center>view:nth-child(1) image{
+  width: 130rpx;
+  height:130rpx;
+  border-radius: 5px;
+}
+.orderDetail-center>view:nth-child(2){
+  width: 74%;
+   display: flex;
+   flex-direction: column;
+   padding: 0 10px;
+   justify-content: space-around;
+   align-items: flex-start;
+}
+/* 交易编号 */
+
+.orderDetail-bottom {
+  color: #80848f;
+  padding: 10px;
+}

@@ -1,0 +1,50 @@
+<!--pages/rankList/ranklist.wxml-->
+<view class='rankList-page'>
+  <view class='ranklist-header'>
+    <image src="../../images/cloude.png"></image>
+    <image src="../../images/rank.png"></image>
+    <image src="../../images/cloude.png"></image>
+  </view>
+  <view class='ranklist-card'>
+    
+    <view class='ranklist-card_top'>
+      <view>
+        <view data-tab="jf" bindtap='handleChangeTab' class='{{curTab=="jf"?"color-active":""}}'>积分榜</view> /
+        <view data-tab="dt" bindtap='handleChangeTab' class='{{curTab=="dt"?"color-active":""}}'>答题榜</view>
+      </view>
+    </view>
+
+    <view class='ranklist-card_title'>
+      <text>排名</text>
+      <text>用户　</text>
+      <text>{{curTab == 'jf'?'积分':'答题'}}</text>
+    </view>
+   
+   <scroll-view class='ranklist-card_list' 
+    scroll-y
+    bindscrolltolower="loadMore"
+    bindscroll="scroll"
+    scroll-top="{{scrollTop}}"
+    >
+    
+      <view wx:for="{{rankList}}" wx:for-item="item" wx:for-index="index" wx:key="item" class='ranklist-card_user'>
+        <view>
+          <image wx:if="{{item.Rank <= 3}}" src="{{item.Rank==1?'../../images/rank1.png':item.Rank==2?'../../images/rank2.png':'../../images/rank3.png'}}"></image>
+          <text wx:else>{{item.Rank}}</text>
+        </view>
+        <view>
+          　<i-avatar src="{{item.Avatar}}" size="small"></i-avatar>　
+            <text>{{item.UserName}}</text>
+        </view>
+        <text>{{item.TotalIntegral}}</text>
+      </view>
+       <view wx:if="{{loading}}" class='loading'>
+            <i-load-more />
+       </view>
+       <view class="no-more_data tips" wx:if="{{!loading && (jfPage >= jfTotal || dtPage >= dtTotal)}}">
+         {{rankList.length<100?"暂无更多数据":"最多展示100名用户"}}
+       </view>
+   </scroll-view>
+
+  </view>
+</view>

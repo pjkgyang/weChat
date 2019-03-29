@@ -1,0 +1,6 @@
+<!--pages/mytask/mytask.wxml-->
+<view class='mytask-page'>
+  <view wx:for="{{taskList}}" wx:for-item="item" wx:for-index="index"    data-item="{{item}}" wx:key="index" bindtap='handleCheckDetail'>
+    <task-card taskItem="{{item}}" sfMy="true"></task-card>
+  </view>
+</view>

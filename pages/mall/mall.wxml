@@ -1,0 +1,35 @@
+<!--pages/mall/mall.wxml-->
+<view class="mall-page">
+
+  <view class="integral-nav">
+    <view>总积分</view>
+    <view>{{integral}}</view>
+    <view bindtap='handleCheckIntegralDetail'>积分明细</view>
+  </view>
+
+  <view class="mall-goods">
+    <view class='goods-out' wx:for="{{goodsList}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+      <view class='goods-image'>
+        <image src="{{item.CoverImgUrl}}"></image>
+      </view>
+      <view class='goods-intro'>
+        {{item.Title}}
+      </view>
+      <view class='goods-integral'>
+        <i-icon type="financial_fill" /> {{item.Integral}}
+      </view>
+      <view class='goods-btn' data-id="{{item.Id}}" bindtap='handleCreditsExchange'>
+        <i-icon type="shop_fill" /> 立即兑换
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{loading}}">
+      <i-load-more tip="加载中" loading/>
+  </view>
+  <view  wx:if="{{!loading && curPage >= total && !!goodsList.length}}" class="no-more_data">
+      暂无更多数据
+  </view>
+  <view  wx:if="{{!loading && !goodsList.length}}" >
+      <empty-content></empty-content>
+  </view>
+</view>

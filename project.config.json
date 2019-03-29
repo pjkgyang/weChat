@@ -1,0 +1,58 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.6.4",
+	"appid": "wx78ae778d45cd3547",
+	"projectname": "%E5%B9%B3%E5%87%A1%E4%B9%8B%E8%B7%AF",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 1,
+			"list": [
+				{
+					"id": 0,
+					"name": "ceshi",
+					"pathName": "pages/home/home",
+					"query": "scene=3807a501b3dd0230394c0100",
+					"scene": 1007
+				},
+				{
+					"id": 1,
+					"name": "ceshi2",
+					"pathName": "pages/home/home",
+					"query": "",
+					"scene": 1001
+				}
+			]
+		}
+	}
+}

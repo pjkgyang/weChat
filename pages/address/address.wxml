@@ -1,0 +1,16 @@
+<!--pages/address/address.wxml-->
+
+<import src="../../template/template.wxml"/>
+<view class="address-page">
+  <view  class='add-address-list' wx:for="{{addressArr}}" wx:for-item="item" wx:for-index="index" wx:key="item">
+    <!-- <template is="address" data="{{address:item,isedit:true}}"></template>   -->
+    <address-cadr isedit="{{true}}" address="{{item}}" index="{{index}}" bind:handleEditAddr="handleEditAddr" bind:handleDeleteAddr="handleDeleteAddr" bind:handleSetDefault="handleSetDefault" bind:handleChooseAddr="handleChooseAddr"></address-cadr>
+  </view>
+  <view>
+  
+  </view>
+  <view class='add-address-btn'  bindtap='handleAddAdress'>
+     <i-icon type="add" /><text>添加收货地址</text>
+  </view>
+</view>
+<i-message id="message" />

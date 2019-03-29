@@ -1,0 +1,40 @@
+/* pages/interlocuteBegin/interlocutebegin.wxss */
+.interlocuteBegin-page{
+  height: 100vh;
+  width: 100%;
+  /* background:linear-gradient(#4E84E6,rgb(124, 166, 243),rgb(170, 197, 248)); */
+  background: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553752408952&di=ac50fc16f01b4f83660080803a681ae1&imgtype=0&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2F73affa819dda283ea5d8d065ed5ec88099ab5edec56f-JK27Cr_fw658') no-repeat;
+  background-size: cover;
+}
+.interlocuteBegin-container{
+  padding: 10px;
+  color: #fff;
+  padding-top:50px;
+}
+.container-rule_title{
+  text-align: center;
+  background: #70698e;
+  border-radius: 15px;
+  height: 30px;
+  line-height: 30px;
+  width: 50%;
+  margin: 0 auto;
+}
+.container-rule_list{
+  padding: 0 10px;
+  font-size: 30rpx;
+}
+.container-rule_list view{
+   padding: 10px 0;
+   
+}
+.container-btn{
+  width: 60%;
+  background: rgb(230, 139, 78);
+  height: 80rpx;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  line-height: 80rpx;
+  margin: 30px auto 0;
+}

@@ -1,0 +1,21 @@
+<!--pages/interlocuteBegin/interlocutebegin.wxml-->
+<view class='interlocuteBegin-page'>
+  <view class='interlocuteBegin-container'>
+     <view class='container-rule_title'>
+         答题规则
+      </view>
+      <view class="container-rule_list">
+         <view>1.积分获取：答对1题获得1积分，打错不积分。</view> 
+         <view>2.分享奖励：分享1次获得1次答题机会，1次答题机会内为5道题。</view> 
+         <view>3.答题限值：每日最多获得3次答题机会，即15道题。</view> 
+         <view>4.积分排行规则：正序排布方式，积分越多排名越高。若出现积分相同的情况，则按答题时间排序。</view> 
+         <view>5.奖品获得：每月固定日期，按照积分正序统计月榜单1-3名，次日公布中奖者及奖品，月榜单前50名用户将有机会受邀参加动力学院线下挑战赛，并有机会获得现金奖励。</view>
+      </view>
+      <view class="container-btn" bindtap='handleBegin'>
+           开始答题
+      </view>
+      <view class="container-tip">
+       
+      </view>
+  </view>
+</view>

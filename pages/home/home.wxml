@@ -1,0 +1,36 @@
+<!--home.wxml-->
+<import src="../../template/template.wxml" />
+<view class='home-page'>
+  <view class='home-top'>
+    <template is="topBar"></template>
+    <swiper indicator-dots="true" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true" indicator-active-color="#fff" bindchange='swiperChange'>
+      <block wx:for="{{banners}}" wx:for-item="item" wx:for-index="index" wx:key="index" class="swiper-block">
+        <swiper-item data-id="{{item.Url}}" bindtap="swiperClick">
+          <view class="swiper-text">
+            <text style='font-size:30rpx;font-weight:700'>{{item.Title}}</text>
+            <text>{{item.Summary.length>30?(item.Summary.substring(0, 27)+'...'):item.Summary}}</text>
+          </view>
+          <image src="{{item.ImgUrl}}" class="slide-image" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <view class="sort-list">
+    <view class='sort-list_title'>
+      动力学院 The college of power
+    </view>
+    <view class='sort-list_option'>
+      <view wx:for="{{sorts}}" wx:for-item="item" wx:for-index="index" wx:key="sorts" class="{{item.bgclass}}"  data-id="{{item.Id}}" 
+      data-name="{{item.Name}}"  bindtap='handleToDetail'>
+          <image src="{{item.Icon}}"></image>
+        <view class='sort_text' >
+          <text >{{item.Name}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- <i-modal visible="{{ true }}" title="答题得好礼" bind:ok="handleClose" bind:cancel="handleClose">
+    <view>这是一个无标题的对话框</view>
+</i-modal> -->

@@ -1,0 +1,20 @@
+<!--pages/orderSort/sort.wxml-->
+<view class="sort-page">
+    <view class='sort-page_title'>
+        链接导航
+    </view>
+    <view  class='sort-page_menu'>
+        <view data-url="/pages/order/order" bindtap='handleRouter'>
+         <i-icon type="redpacket_fill" size="20"/>
+            查看我的订单
+        </view>
+         <view data-url="/pages/integralDetail/detail" bindtap='handleRouter'>
+         <i-icon type="createtask_fill" size="20" />
+           查看积分明细
+        </view>
+         <view data-url="/pages/address/address" bindtap='handleRouter'>
+         <i-icon type="setup_fill" size="20"/>
+          管理收货地址
+        </view>
+    </view>
+</view>

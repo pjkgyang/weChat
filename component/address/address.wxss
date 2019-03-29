@@ -1,0 +1,39 @@
+/* component/address/address.wxss */
+/* 地址列表 */
+
+.address-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  font-size: 26rpx;
+}
+.address-list_Info{
+    width: 100%;
+}
+.address-list .address-list_detail{
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+
+}
+.address-list-oprate {
+  font-size: 25rpx;
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  color: #80848f;
+  padding: 10px 0;
+  border-top: 1px solid #e9eaec;
+}
+.address-list-oprate .oprate-editDel{
+  display:flex;
+}
+.address-list-oprate .oprate-editDel>view:nth-child(1) {
+  color: #2b85e4;
+  margin-right: 20px;
+}
+
+.address-list-oprate .oprate-editDel>view:nth-child(2) {
+  color: #f00;
+}

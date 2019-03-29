@@ -1,0 +1,39 @@
+<view class='address-list'>
+
+    <view class='address-list_Info'>
+     
+      <view class='address-list_detail' data-item="{{address}}" bindtap='handleChooseAddr'>
+
+        <i-icon type="coordinates" size="24" />
+        <view>
+          <view>
+            收货人：{{address.Receiver}} {{address.PhoneNumber}} 
+            <i-tag class="i-tags" type="border" color="red" wx:if="{{!!address.IsDefault}}">
+              默认
+            </i-tag>
+          </view>
+          <view>{{address.Region}}{{address.DetailAddress}}</view>
+        </view>
+
+      </view>
+      
+      <view wx:if="{{isedit == true}}" class='address-list-oprate'>
+        <!-- <i-icon type="editor" size="24"/> -->
+        <view >
+         <view wx:if="{{!address.IsDefault}}">
+        设为默认地址:
+          <i-switch data-id='{{address.Id}}' size="small" value="{{!address.isdefault?false:true}}" bind:change="handleSetDefault" slot="footer"></i-switch>
+          </view>
+         </view>
+        <view class='oprate-editDel'>
+          <view data-item='{{address}}' bindtap='handleEditAddr'>编辑 <i-icon type="editor"/></view>
+          <view data-id='{{address.Id}}' data-index='{{index}}'  bindtap='handleDeleteAddr'>删除 <i-icon type="trash" /></view>
+        </view>
+      </view>
+
+    </view>
+
+    <view wx:if="{{isedit == false}}">
+      <i-icon type="enter" size="24"/>
+    </view>
+  </view>

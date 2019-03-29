@@ -1,0 +1,33 @@
+<!--pages/addrcommit/addrcommit.wxml-->
+<import src="../../template/template.wxml"/>
+<view class='addrcommit-page'>
+  <view class='addrcommit-parcel'>
+    <view class='addrcommit-top'>
+      <view class='addrcommit-shipaddr addr-base' wx:if="{{!address}}" bindtap='handleChooseAddress'>
+          <view>
+            <i-icon type="coordinates" size="24" />
+            <text>请选择收货地址</text>
+          </view>
+          <view>
+            <i-icon type="enter" size="24" />
+          </view>
+      </view>
+      <view wx:if="{{!!address}}" >
+        <address-cadr isedit="{{false}}" address="{{address}}" bindhandleChooseAddr="handleChooseAddr"></address-cadr> 
+      </view>
+    </view>
+
+    <view class='addrcommit-goods'>
+      <image src="{{giftDetail.CoverImgUrl?giftDetail.CoverImgUrl:'http://img0.imgtn.bdimg.com/it/u=2373144604,3573823380&fm=26&gp=0.jpg'}}"></image>
+      <view>
+        <text>{{giftDetail.Title}}</text>
+        <view>积分 <text style="color:#ff9900">{{giftDetail.Integral}}</text> </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='malldetail-btn'>
+    <i-button type="primary" bind:click="handleCommit" long="true" size="small">提交</i-button>
+  </view>
+</view>
+<i-message id="message" />

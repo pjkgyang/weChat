@@ -1,0 +1,39 @@
+<!--pages/orderDetail/orderdetail.wxml-->
+<view class='orderDetail-page'>
+  <view class='orderDetail-top'>
+    <view class='orderDetail-zt'>
+     <text>{{orderDetail.CommodityState==0?'申请中':'已完成'}}</text> 
+     <image src="../../images/pay.png"></image>
+    </view>
+    <view class='orderDetail-address'>
+       <view>
+          <i-icon type="coordinates" size="26"/>
+       </view>
+       <view>
+          <view><text class='name'>{{orderDetail.AddressReceiver}}</text>  {{orderDetail.AddressPhoneNumber}}</view>  
+          <view>{{orderDetail.AddressProvince}}{{orderDetail.AddressCity}}{{orderDetail.AddressDistrict}}
+          {{orderDetail.AddressDetailAddress}}</view>  
+       </view> 
+    </view>
+  </view>
+  
+  <view class='orderDetail-center'>
+     <view><image src="{{orderDetail.CommodityCoverImgUrl}}"></image></view>
+      <view>
+        <view>
+          {{orderDetail.CommodityTitle}}
+        </view>
+        <view style='color:#ff9900'>
+          <i-icon type="financial_fill" />
+          <text>{{orderDetail.CommodityIntegral}}</text>  
+        </view>
+      </view>
+  </view>
+
+  <view class='orderDetail-bottom'>
+     <view>订单编号：{{orderDetail.Id}}</view>
+     <view>快递名称：{{orderDetail.ExpressCompany}}</view>
+     <view>快递单号：{{orderDetail.ExpressNum}}</view>
+     <view>兑换时间：{{orderDetail.CreationTime}}</view>
+  </view>
+</view>

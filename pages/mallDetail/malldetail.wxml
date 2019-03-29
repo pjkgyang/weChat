@@ -1,0 +1,53 @@
+<!--pages/mallDetail/malldetail.wxml-->
+<import src="../../wxParse/wxParse.wxml" />
+<view class='malldetail-page'>
+  <view class="malldetail-info" >
+    <swiper
+      class='swiper'
+      indicator-dots="true"
+      autoplay="true"
+      interval="3000"
+      duration="1000"
+      circular="true"
+      indicator-active-color="#fff"
+    >
+      <block wx:for="{{bannerList}}" wx:key="item">
+        <swiper-item>
+          <image src="{{item}}" class="slide-image" width="355" height="150" />
+        </swiper-item>
+      </block>
+    </swiper>
+
+    <view class='malldetail-text-need malldetail-base'>
+        <!-- 标题 -->
+        <view class='malldetail-title'>
+            {{giftDetail.Title}}
+        </view>
+         <!-- 摘要 -->
+        <view class='malldetail-text'>
+           <text>{{giftDetail.Summary}}</text>
+        </view> 
+
+        <view class='malldetail-need'>
+            <view><i-icon type="financial_fill" /> {{giftDetail.Integral}}</view>
+            <view>库存: {{giftDetail.RemainStock}} 件</view>
+        </view>
+    </view>
+
+    <view class='malldetail-imagetext malldetail-base'>
+      <view class='malldetail-imagetext_title'>
+        图文详情
+      </view>
+
+      <view>
+       <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+      </view>
+      
+    </view>
+
+  </view>
+
+  <view class='malldetail-btn'>
+    <i-button type="primary" bind:click="handleCommit" long="true" size="small">立即兑换</i-button>
+  </view>
+</view>

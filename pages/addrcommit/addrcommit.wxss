@@ -1,0 +1,36 @@
+/* pages/addrcommit/addrcommit.wxss */
+@import "../../template/template.wxss";
+.addrcommit-parcel{
+  background: #f5f5f5;
+  height:calc(100vh - 40px);
+  font-size: 26rpx;
+}
+
+.addrcommit-parcel .addrcommit-top{
+  background: #fff;
+  padding: 10px 20px;
+}
+.addrcommit-parcel .addrcommit-top .addrcommit-shipaddr{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* 商品 */
+.addrcommit-parcel  .addrcommit-goods{
+  margin-top: 10px;
+  background: #fff;
+  padding: 10px 20px;
+  display: flex;
+}
+.addrcommit-parcel  .addrcommit-goods image{
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 5px;
+} 
+.addrcommit-parcel  .addrcommit-goods >view{
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}

@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "i-avatar": "../../dist/avatar/index",
+    "i-icon": "../../dist/icon/index",
+    "i-message": "../../dist/message/index",
+    "txv-video": "plugin://tencentvideo/video"
+  }
+}

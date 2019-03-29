@@ -1,0 +1,124 @@
+<import src="../../template/template.wxml" />
+<wxs module="dateFr" src="../../filter/dateFilter.wxs"></wxs>
+<view style='height:100vh;'>
+  <view class='topbar'>
+    <template is="topBar"></template>
+  </view>
+  <view class='mine-container'>
+    <view>
+      <view class="mine-page">
+        <view class="mine-top">
+          <view class='mine-userinfo'>
+            <view>
+              <open-data type="userNickName" lang="zh_CN"></open-data>
+            </view>
+            <view>
+              <open-data type="userGender" lang="zh_CN"></open-data> 　
+              <open-data type="userProvince" lang="zh_CN"></open-data>
+              <open-data type="userCity" lang="zh_CN"></open-data>
+            </view>
+            <view>
+              欢迎您来到潍柴！
+            </view>
+
+            <view class='mine-sign'>
+                <view class="sign-btn {{relatedInfo.IsSign?'signed':''}}" bindtap='handleSign'>
+                 {{relatedInfo.IsSign?'已签到':'签到'}} 
+                </view>
+            </view>
+          </view>
+
+          <view class='mine-right'>
+            <view class='mine-avatar'>
+              <i-avatar size="large" src="{{userInfo.avatarUrl}}"></i-avatar>
+            </view>
+            <view>
+              <view>积分 　{{!relatedInfo.Integral?0:relatedInfo.Integral}}</view>
+            </view>
+          </view>
+        </view>
+
+        <view class="mine-bottom">
+        
+          <view class='mine-options'>
+            <view class='mine-rank'>
+                <text>我的排名</text>
+                <text style='color:#f90'>{{!relatedInfo.Rank?'无':relatedInfo.Rank}}</text>
+            </view>
+            <view class='other-order'>
+              <view data-url="/pages/orderSort/sort" bindtap='handleRouter'> 
+                  <image src="../../images/order-jf.png"></image>
+                  <view>积分订单</view>
+              </view>
+              <view data-url="/pages/task/task" bindtap='handleRouter'>
+                  <image src="../../images/task-center.png"></image>
+                  <view>任务中心</view>
+              </view>
+              <view data-url="/pages/interlocuteBegin/interlocutebegin" bindtap='handleRouter'>
+                  <image src="../../images/answer-center.png"></image>
+                  <view>答题中心</view>
+              </view>
+          </view>
+
+          </view>
+
+          <view class='rank-list'>
+            <view class='rank-list_top'>
+              <view>
+                 <text data-tab="jf" bindtap='handleChangeTab' class='{{curTab=="jf"?"color-active":""}}'>积分榜</text> / 
+                 <text data-tab="dt" bindtap='handleChangeTab' class='{{curTab=="dt"?"color-active":""}}'>答题榜</text>
+              </view>
+              <text bindtap='handleCheckRank'>查看全部</text>
+            </view>
+            <view class='rank-list_title'>
+              <text>排名</text>
+              <text>用户　</text>
+              <text>{{curTab == 'jf'?'积分':'问答'}}</text>
+            </view>
+            <view wx:for="{{rankList}}" wx:for-item="item" wx:key="item" class='rank-list_user'>
+              <view>
+              <image src="{{item.Rank==1?'../../images/rank1.png':item.Rank==2?'../../images/rank2.png':'../../images/rank3.png'}}"></image>
+              </view>
+              <view>
+                <i-avatar src="{{item.Avatar}}" size="small"></i-avatar>　
+                <text>{{item.UserName}}</text>
+              </view>
+              <text>{{item.TotalIntegral}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!-- <open-data type="groupName" open-gid="xxxxxx"></open-data> -->
+      <!-- <open-data type="userGender" lang="zh_CN"></open-data> -->
+    </view>
+  </view>
+
+
+</view>
+<i-modal title="签到成功" visible="{{ signShow }}" actions="{{ actions }}" bind:click="handleClick" >
+<view class='sign-record'>
+    <view>
+       <view><i-icon type="barrage" /> 签到总次数</view>
+       <view>{{signInfo.TotalTimes}}</view>
+    </view>
+    <view>
+       <view><i-icon type="brush" /> 连续签到次数</view>
+       <view>{{signInfo.ContinuousTimes}}</view>
+    </view>
+    <view>
+       <view><i-icon type="activity" /> 连续签到最大次数</view>
+       <view>{{signInfo.ContinuousMaxTimes}}</view>
+    </view>
+    <view>
+       <view><i-icon type="time" /> 上一次签到时间</view>
+       <view>{{dateFr.formatData(signInfo.LastTime)}}</view>
+    </view>
+    </view>
+</i-modal>
+<i-modal title="签到成功" visible="{{ signShow2 }}" actions="{{ actions }}" bind:click="handleClick" >
+  <view class="sign-success">
+      <image src ="../../images/jf.png"></image>
+      <view>积分 + 1</view>
+  </view>
+</i-modal>
+

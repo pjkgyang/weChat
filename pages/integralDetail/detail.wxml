@@ -1,0 +1,17 @@
+<!--pages/integralDetail/detail.wxml-->
+<wxs module="dateFr" src="../../filter/dateFilter.wxs"></wxs>
+<view class='integral-page'>
+    <view class='integral-list' wx:for="{{jfArr}}" wx:for-item="item" wx:key="item">
+      <view>
+        <text>{{!item.IntegralSourceName?'':item.IntegralSourceName}}</text>
+        <view class='date'>{{dateFr.formatData(item.CreationTime)}}</view>
+      </view>
+      <view>{{item.Integral}} 积分</view>
+    </view> 
+    <view wx:if="{{!jfArr.length}}">
+      <empty-content></empty-content>
+    </view>
+    <view class='no-more_data' wx:if="{{curPage >= total && !!jfArr.length}}">
+       暂无更多数据
+    </view>
+</view>

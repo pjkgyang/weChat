@@ -1,0 +1,115 @@
+<!--pages/columnDetail/columndetail.wxml-->
+<wxs module="dateFr" src="../../filter/dateFilter.wxs"></wxs>
+<import src="../../wxParse/wxParse.wxml" />
+
+<view class='columnDettail-page'>
+
+  <view class='columnDettail-detail'>
+    <view class="columnDettail-title">
+      {{information.Title}}
+    </view>
+    <view class="columnDettail-abbr">
+      <view>{{information.Creator}}   {{dateFr.getDateDiff(information.PublishTime)}}</view>
+       <view>
+         <i-icon type="browse" size="20"/>浏览数 
+         <text>{{information.Views}}</text> 
+       </view>
+    </view>
+    <view class='columnDettail-content'>
+      <!-- 图文 -->
+      <view wx:if="{{information.Type == 2}}">
+        <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+      </view>
+
+      <!-- 视频 -->
+      <view wx:if="{{information.Type == '0' && !information.IsVid}}">
+          <video  id="myVideo" 
+          src="{{information.Content}}"
+            show-progress="false" poster="{{!information.CoverImgUrl?'':information.CoverImgUrl}}" autoplay controls></video>
+      </view>
+
+      <view wx:if="{{information.Type == '0' && !!information.IsVid}}">
+        <txv-video  vid="{{information.Content}}" playerid="txv" autoplay controls></txv-video>
+      </view>
+
+      <!-- 音频 -->
+      <view wx:if="{{information.Type == 1}}">
+        <view style="width:250rpx;height:250rpx;left:50%;top:12rpx;margin-left:-125rpx;position:relative;" wx:if="{{isplay==false}}" bindtap='play'>
+          <image style="width:100%;height:100%;border-radius:50%;" src='http://y.gtimg.cn/music/photo_new/T002R300x300M000003rsKF44GyaSk.jpg?max_age=2592000' />
+          <view style="width:100rpx;height:100rpx;position:absolute;left:75rpx;top:92rpx;text-align:center;line-height:75rpx;">
+            <image src='../../images/play.png' style='width:30px;height:30px'></image>
+          </view>
+        </view>
+        <!--当前为播放状态  -->
+        <view style="width:250rpx;height:250rpx;left:50%;top:12rpx;margin-left:-125rpx;position:relative;" wx:if="{{isplay==true}}" bindtap='stop'>
+          <image style="width:100%;height:100%;border-radius:50%;" src='http://y.gtimg.cn/music/photo_new/T002R300x300M000003rsKF44GyaSk.jpg?max_age=2592000' />
+          <view style="width:100rpx;height:100rpx;position:absolute;left:75rpx;top:92rpx;text-align:center;line-height:75rpx;">
+            <image src='../../images/pause.png' style='width:30px;height:30px'></image>
+          </view>
+        </view>
+
+        <view class='audio-slider'>
+           <text>{{!currentTime?'00:00':currentTime}}</text>
+           <slider style="width:400rpx;margin-left:44rpx;" value="{{curTime}}" 	 min="0"  max="{{totalTime}}" block-size="20" bindchanging="handleSlidering" bindchange="sliderchange"></slider>
+           <text>{{!duration?'00:00':duration}}</text>
+        </view>
+        
+      </view>
+    </view>
+  </view>
+
+  <view class='columnDettail-comment'>
+    <view class='comment-title'>全部评论（{{information.Comments}}）</view>
+    <view class='comment-list' wx:for="{{commentList}}" wx:for-item="item" wx:key="item" wx:for-index="index">
+      <view wx:if="{{item.IsTop}}">
+          <i-tag class="i-tags" color="red" >置顶</i-tag> 
+      </view>  
+      <view class='comment-user'>
+        <i-avatar src="{{item.Avatar}}" size="small"></i-avatar>
+        <text class='comment-username'>
+            <text class='font700'>{{item.UserName}}</text>
+        </text>
+      </view>
+      <view class='comment-info'>
+        <view class='comment-content'>
+          {{item.Content}} 
+          <view wx:if="{{!!item.ParentUserName}}" class='comment-content_original'>
+            <text>原评论 {{item.ParentUserName}} :</text>{{item.ParentContent}}
+          </view>
+        </view>
+        <view class='comment-date'>
+          <text>{{!dateFr.getDateDiff(item.CreationTime)?'刚刚':dateFr.getDateDiff(item.CreationTime)}}</text>　·
+          <view data-id="{{item.Id}}" bindtap='handleReplyComment'>回复</view>
+        </view>
+      </view>
+    </view>
+
+    <view class='comment-none' wx:if="{{!commentList.length}}">
+      暂无评论
+    </view>
+    <view class='comment-none baseColor' wx:if="{{curPage < total && !!commentList.length}}" bindtap="handeCheckMoreComment">
+      <text>查看更多评论</text>
+    </view>
+    <view class='no-more_data' wx:if="{{curPage >= total && !!commentList.length}}">
+      <text>暂无更多评论</text>
+    </view>
+
+  </view>
+
+  <view class='comment-textarea'>
+    <view class='comment-tag' bindtap='handleComment'>
+      <i-icon type="brush" /> 评论一下
+    </view>
+  </view>
+
+  <action-sheet hidden="{{visible}}" bindchange="actionSheetChange">
+    <view class='textarea'>
+      <input value="{{commentContent}}" placeholder-class="place-holder" placeholder="评论内容" focus="{{focus}}" maxlength="100" bindinput="bindKeyInput" adjust-position/>
+      <view class='commit-btn' bindtap='handlePutout'>
+        发布
+      </view>
+    </view>
+    <action-sheet-cancel>取消</action-sheet-cancel>
+  </action-sheet>
+</view>
+<i-message id="message" />

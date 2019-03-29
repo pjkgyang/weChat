@@ -1,0 +1,55 @@
+<!--template/template.wxml-->
+<template name="imagetext">
+  <view class='template-imagetext'>
+    <text class="imagetext-abstract">摘要</text>
+    <view class="imagetext_info">
+      <image class="imagetext-img" src='http://img17.3lian.com/d/file/201702/20/ec4acb80b76b3e84fe58f48b558908d3.jpg'></image>
+    </view>
+  </view>
+</template>
+
+
+<template name="address">
+  <view class='address-list'>
+
+    <view class='address-list_Info'>
+     
+      <view class='address-list_detail'>
+
+        <i-icon type="coordinates" size="24" />
+        <view>
+          <view>
+            收货人：{{address.name}} {{address.phone}} 
+            <i-tag class="i-tags" type="border" color="red" wx:if="{{!!address.sfmr}}">
+              默认
+            </i-tag>
+          </view>
+          <view>{{address.addr}}</view>
+        </view>
+
+      </view>
+      
+      <view wx:if="{{isedit == true}}" class='address-list-oprate'>
+        <!-- <i-icon type="editor" size="24"/> -->
+        <view>
+        设为默认地址:
+          <i-switch size="small" value="{{switch1}}" bind:change="onChange" slot="footer"></i-switch>
+        </view>
+        <view class='oprate-editDel'>
+          <view>编辑 <i-icon type="editor" bindtap='handleEdiAddr'/></view>
+          <view>删除 <i-icon type="trash"  /></view>
+        </view>
+      </view>
+
+    </view>
+
+    <view wx:if="{{isedit == false}}">
+      <i-icon type="enter" size="24"/>
+    </view>
+  </view>
+</template>
+
+
+<template name="topBar">
+  <view class='topBar'></view>
+</template>

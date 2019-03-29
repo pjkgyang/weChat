@@ -1,0 +1,24 @@
+<!--pages/addAdress/addAdress.wxml-->
+<view class='address-page'>
+  <view class='address-form'>
+    <i-panel>
+      <i-input bind:change="handleChangeName" value="{{ name }}" title="收货人" autofocus placeholder="名字" />
+      <i-input bind:change="handleChangePhone"  value="{{ phone }}" type="number" title="联系电话" placeholder="请输入手机号" />
+      <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+        <view class="picker">
+          <i-input value="{{region[0]}}{{region[1]}}{{region[2]}}" title="所在区域" placeholder="请选择所属区域" />
+        </view>
+      </picker>
+      <i-input  bind:change="handleChangeAddr" value="{{ address }}" type="textarea" title="详细地址" placeholder="请输入详细地址(最多50字)" maxlength="50" />
+    </i-panel>
+    <view class='address-switch'>
+      是否默认：
+      <i-switch value="{{defaultAddr}}" size="small" bind:change="onChange" slot="footer"></i-switch>
+    </view>
+  </view>
+
+  <view class='address-btn'>
+    <i-button type="primary" bind:click="handleSaveAddr" long="true" size="small">保存</i-button>
+  </view>
+</view>
+<i-message id="message" />

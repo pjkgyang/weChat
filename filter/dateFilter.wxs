@@ -1,0 +1,68 @@
+var DateFr = {
+  getDateDiff:function(dateTime) {
+    var dateTimeStamp = getDate(dateTime).getTime();
+    var minute = 1000 * 60;
+    var hour = minute * 60;
+    var day = hour * 24;
+    var halfamonth = day * 15;
+    var month = day * 30;
+    var now = getDate(); //有些特殊 不能使用 new Date()
+    var diffValue = now - dateTimeStamp;
+    if (diffValue < 0) {
+      return;
+    }
+    var monthC = diffValue / month;
+    var weekC = diffValue / (7 * day);
+    var dayC = diffValue / day;
+    var hourC = diffValue / hour;
+    var minC = diffValue / minute;
+    if (monthC >= 1) {
+      result = "" + parseInt(monthC) + "月前";
+    } else if (weekC >= 1) {
+      result = "" + parseInt(weekC) + "周前";
+    } else if (dayC >= 1) {
+      result = "" + parseInt(dayC) + "天前";
+    } else if (hourC >= 1) {
+      result = "" + parseInt(hourC) + "小时前";
+    } else if (minC >= 1) {
+      result = "" + parseInt(minC) + "分钟前";
+    } else
+      result = "刚刚";
+    return result;
+  }, //时间戳转化为几天前，几小时前，几分钟前
+
+  // 转化为日期
+  formatData: function (dateTime) {
+    // var theDate = new Date(dateTime);
+    // var _year = theDate.getFullYear();
+    // var _month = theDate.getMonth();
+    // var _date = theDate.getDate();
+    // _month = _month + 1;
+    // if (_month < 10) { _month = "0" + _month};
+    // if (_date < 10) { _date = "0" + _date };
+    // var time = _year + "-" + _month + "-" + _date;
+    var time = dateTime.split('T')[0];
+    return time;
+  },
+
+  formatTime:function(times){
+    let minute = '';
+    let seconds = '';
+    if (times % 60 == 0) {
+      minute = (times / 60) < 10 ? '0' + (times / 60) : (times / 60);
+      seconds = '00';
+    } else {
+      minute = Math.floor(times / 60) < 10 ? '0' + Math.floor(times / 60) : Math.floor(times / 60);
+      seconds = Math.floor(times % 60) < 10 ? '0' + Math.floor(times % 60) : Math.floor(times % 60);
+    }
+    let resultTime = minute + ':' + seconds;
+    return resultTime;
+  }
+}
+
+
+module.exports = {
+  getDateDiff: DateFr.getDateDiff,
+  formatData: DateFr.formatData,
+  formatTime: DateFr.formatTime
+}

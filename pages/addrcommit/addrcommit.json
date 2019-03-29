@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "订单确认",
+  "usingComponents": {
+    "i-icon": "../../dist/icon/index",
+    "i-button": "../../dist/button/index",
+    "i-tag": "../../dist/tag/index",
+    "address-cadr": "../../component/address/address"
+  }
+}

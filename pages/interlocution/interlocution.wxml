@@ -1,0 +1,87 @@
+<!--pages/interlocution/interlocution.wxml-->
+
+<view class='interlocution-page'>
+<view wx:if="{{!complete && answerFrequency>0}}">
+  <view class='interlocution-topbar' >
+     第{{curNum}}题 / 共{{questionData.TotalQuestion}}题
+  </view>
+  <view class='interlocution-content'>
+     <view class='interlocution-time'>
+        {{countDown}}s
+     </view>
+    <!-- 问题列表 -->
+    <view class='interlocution-list'>
+      <view wx:for="{{questionData.Questions}}" wx:for-item="items" wx:key="items" wx:for-index="indexs" wx-if="{{current == indexs}}">
+        <view class="interlocution-title">
+          <!-- 第 {{indexs+1}} 题 -->
+          <text class='colorBlue'> (本题积分{{items.Integral}}) </text> {{items.topic}}
+        </view>
+        <view  class="interlocution-option {{(answer[indexs] == items.daan && answer[indexs]==key)||key == items.daan && !!answer[indexs] && answer[indexs] != items.daan?'choosing-color':answer[indexs] != items.daan && answer[indexs]==key?'choosing-error-color':''}}" wx:for="{{items.option}}" data-ind="{{indexs}}" data-daan="{{key}}" data-zqda="{{items.daan}}" wx:for-index="key" wx:for-item="value" wx:key="key" wx:if="{{key.length == 1 && !!value}}" data-item="{{items}}"   bindtap='handleChooseAnswer'>
+          <text>{{key}}</text>.{{value}}
+        </view>
+      </view>
+    </view>
+
+    <view class="answer-reault" wx:if="{{curResult}}">
+       <view class="answer-reault_success" wx:if="{{answerSuccess}}">
+         <view>恭喜你,回答正确！</view>
+         <image style="width:32px;height:32px" src="../../images/success.png"></image>
+       </view> 
+      <view class="answer-reault_error" wx:if="{{!answerSuccess}}">
+         <view>对不起,回答错误！</view> 
+        <image style="width:32px;height:32px" src="../../images/error.png"></image>
+      </view>
+      <view class="answer-reault_time">
+        <text>{{nextSecond}}s</text> {{current+1>=questionData.TotalQuestion?'进入结算页面！':'后自动进入下一题！'}}
+      </view>
+    </view>
+  </view>
+  </view>
+
+    <view wx:if="{{complete}}">
+       
+        <view class="interlocution-content">
+             <view class='interlocution-topbar'>
+              共答 {{completeResult.TotalQuestions}} 题
+             </view>
+             <view class="interlocution-condition">
+                <view>
+                  <image src="../../images/right.png"></image>
+                  <text>答对 {{completeResult.RightQuestions}} 题</text>
+                </view>
+                 <view>
+                  <image src="../../images/faliure.png"></image>
+                  <text>答错 {{completeResult.WrongQuestions}} 题</text>
+                </view>
+                <view>
+                 共赢得积分：<text class="colorOrange">{{completeResult.Integral}}</text>　分 
+                </view>
+
+                <view>
+                  <view class="answerResults-btn" wx:if="{{answerFrequency > 0}}">
+                    <view class="interlocution-btn_submit" bindtap='handleGoonAnswer'>继续答题</view>
+                  </view>
+                </view>
+             </view>  
+        </view>
+
+    </view>
+
+     <view wx:if="{{!complete && answerFrequency <= 0}}">
+        <view class="interlocution-content answerEnd">
+          <view class='answerEnd-tip'>
+            <image src="../../images/end.png"></image>
+            <view>
+              <i-icon type="brush_fill" color="#4E84E6" size="23"/> 
+              <text>今天答题次数已用完,明天再来吧~</text>
+            </view>
+          </view>
+        </view>
+     </view>
+</view>
+
+<i-modal title="提示" visible="{{ visible }}" actions="{{ actions }}" bind:click="handleClick">
+    <view>您没有收货地址，是否填写收货地址？</view>
+</i-modal>
+
+

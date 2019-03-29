@@ -1,0 +1,263 @@
+@import "../../template/template.wxss";
+
+.Auth-header {
+  margin: 20rpx 30rpx;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+  height: 250rpx;
+  line-height: 450rpx;
+}
+
+.Auth-header image {
+  width: 160rpx;
+  height: 160rpx;
+}
+
+.Auth-content {
+  margin-left: 30rpx;
+  margin-bottom: 60rpx;
+  font-size: 14px;
+}
+
+.Auth-content text {
+  display: block;
+  color: #9d9d9d;
+  margin-top: 20rpx;
+}
+
+.Auth-bottom {
+  border-radius: 80rpx;
+  margin: 70rpx 50rpx;
+  font-size: 30rpx;
+}
+
+/* 信息列表 */
+
+.mine-container {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.mine-auth {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px 0;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.mine-page {
+  padding: 10px 15px;
+}
+
+.mine-page .mine-top {
+  background: #fff;
+  padding: 45rpx 0;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.mine-page .mine-top .mine-avatar {
+  align-items: center;
+  padding-left: 18px;
+}
+
+.mine-page .mine-top .mine-avatar view {
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  border: 1px solid #eee;
+  margin-right: 20px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+.mine-page .mine-top .mine-right {
+  font-size: 24rpx;
+  color: #4e84e6;
+  text-align: center;
+}
+
+.mine-page .mine-top .mine-right>view:nth-child(2) {
+  padding: 10px 0;
+}
+
+.mine-page .mine-top .mine-userinfo {
+  font-size: 24rpx;
+}
+
+.mine-page .mine-top .mine-userinfo>view {
+  padding: 3px 0;
+  color: #bbbec4;
+}
+
+.mine-page .mine-top .mine-userinfo view:nth-child(1) {
+  font-size: 35rpx;
+  color: #333;
+  font-weight: 700;
+}
+
+/* 签到按钮 */
+
+.mine-page .mine-top .mine-sign {
+  margin-top: 10px;
+}
+
+.mine-page .mine-top .mine-sign .sign-btn {
+  width: 150rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  border-radius: 20rpx;
+  color: #fff !important;
+  font-weight: 700;
+  background: #4e84e6;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  float: left;
+  font-size: 24rpx !important;
+  text-align: center;
+}
+.signed{
+  background:#bbbec4 !important;
+}
+/* list */
+
+.mine-bottom {
+  overflow-y: auto;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.mine-bottom .mine-options{
+  padding: 0 20px;
+}
+.mine-bottom .mine-options .other-order {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 25rpx;
+  border-top: 1px solid #f8f8f9;
+  padding: 10px 0;
+}
+
+.mine-bottom .mine-options .mine-rank {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  font-size: 26rpx;
+  font-weight: 700;
+}
+
+.mine-bottom .mine-options .other-order>view {
+  text-align: center;
+  color: rgb(102, 102, 102);
+}
+
+.mine-bottom .mine-options image {
+  width: 24px;
+  height: 24px;
+}
+
+.mine-bottom .mine-options, .mine-bottom .rank-list {
+  margin-top: 10px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.out-padding>view {
+  padding: 10px 20px 10px 50px !important;
+}
+
+.info-icon {
+  position: absolute;
+  top: 12px;
+  left: 30px;
+}
+
+/* 排行 */
+
+.rank-list {
+  font-size: 30rpx;
+  padding: 0 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.rank-list>view {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.rank-list .rank-list_top {
+  border-bottom: 1px solid #eee;
+  font-size: 25rpx;
+}
+
+.rank-list_top>text:nth-of-type(1) {
+  color: #4e84e6;
+}
+
+.rank-list_title {
+  color: #999;
+}
+
+.rank-list_title, .rank-list_user {
+  font-size: 26rpx;
+}
+
+.rank-list_user view:nth-child(1) {
+  width: 24px;
+  height: 24px;
+}
+
+.rank-list_user view:nth-child(1) image {
+  width: 100%;
+  height: 100%;
+}
+
+/* 用户 */
+
+.rank-list_user view:nth-child(2) {
+  width: 40%;
+  display: flex;
+  align-items: center;
+}
+
+.rank-list_user view:nth-child(2) image {
+  width: 24px;
+}
+
+/* 积分 */
+
+.rank-list_user>text:nth-of-type(1) {
+  display: inline-block;
+  width: 10%;
+  color: #f90;
+  font-weight: 700;
+  text-align: right;
+}
+
+.color-active {
+  color: #4e84e6;
+  font-size: 30rpx;
+  font-weight: 700;
+}
+
+/* 签到记录 */
+.sign-record>view {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+  padding: 0 20px;
+}
+.sign-success{
+  margin: 10px 0;
+  padding:  0 20px;
+}
+.sign-success image{
+  width: 40px;
+  height: 40px;
+  text-align: center;
+}

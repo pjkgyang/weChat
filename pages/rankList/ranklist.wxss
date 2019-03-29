@@ -1,0 +1,136 @@
+/* pages/rankList/ranklist.wxss */
+.rankList-page{
+  height:100vh;
+  /* background: linear-gradient(#4E84E6,rgb(131, 165, 230)); */
+  background: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553752408952&di=ac50fc16f01b4f83660080803a681ae1&imgtype=0&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2F73affa819dda283ea5d8d065ed5ec88099ab5edec56f-JK27Cr_fw658') no-repeat;
+  background-size: cover;
+  overflow:hidden;
+}
+.ranklist-header {
+ text-align: center;
+ color: #fff;
+ padding: 20px 0;
+ display: flex;
+ justify-content: center
+}
+.ranklist-header image{
+  width: 60px;
+  height: 50px;
+}
+.ranklist-header image:nth-child(3){
+  transform: rotate(180deg);
+}
+.ranklist-header image:nth-child(2){
+  width: 46px;
+  height: 40px;
+}
+
+/* 列表 */
+.ranklist-card{
+  width: 78%;
+  margin: 0 auto;
+  height: calc(100vh - 95px);
+  overflow-y: auto;
+  position: relative;
+  font-size: 30rpx;
+  padding: 0 20px;
+}
+
+.ranklist-card .ranklist-card_top,
+.ranklist-card .ranklist-card_title{
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+}
+/* tab */
+.ranklist-card .ranklist-card_top{
+  font-size: 25rpx;
+}
+.ranklist-card_top>text:nth-of-type(1){
+  color: #F6F9FF;
+}
+ .ranklist-card_top > view{
+   width: 100%;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+ }
+.ranklist-card_top > view>view{
+  width: 45%;
+  text-align: center;
+  padding: 3px 0;
+}
+
+.ranklist-card_title{
+  color: #F6F9FF;
+}
+.ranklist-card_title,.ranklist-card_user{
+  font-size: 26rpx;
+  color: #F6F9FF;
+}
+.ranklist-card_user view:nth-child(1){
+  width: 24px;
+  height: 24px;
+}
+.ranklist-card_user view:nth-child(1) image{
+  width: 100%;
+  height: 100%;
+}
+.ranklist-card_user view:nth-child(1) text{
+  display: inline-block;
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  background: #bbbec4;
+  color: #fff;
+  line-height: 40rpx;
+  text-align: center;
+}
+
+/* 用户 */
+.ranklist-card_list{
+   overflow-y: auto;
+   max-height:calc(100vh - 360rpx);
+}
+.ranklist-card_list .ranklist-card_user{
+   width: 100%;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 8px 0;
+
+}
+
+.ranklist-card_user view:nth-child(2){
+  width: 40%;
+  display: flex;
+  align-items: center;
+}
+.ranklist-card_user view:nth-child(2) image{
+  width:24px;
+}
+
+/* 积分 */
+.ranklist-card_user>text:nth-of-type(1){
+  display: inline-block;
+  width: 10%;
+  color: #ff9900;
+  font-weight: 700;
+  text-align: right;
+}
+
+
+.color-active{
+ color: #F6F9FF;
+ font-size: 30rpx;
+ font-weight: 700;
+  border-bottom:2px solid #F6F9FF;
+
+}
+.tips{
+  color: #F6F9FF !important;
+}
+
+.loading i-load-more{
+  margin: 5px auto !important;
+}

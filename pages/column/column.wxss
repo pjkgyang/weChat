@@ -1,0 +1,193 @@
+/* pages/detail.wxss */
+.column-page{}
+.column-tabs{
+  width: 100%;
+}
+.column{
+  background: #f5f5f5;
+  transition: all 0.2s;
+}
+.column-base{
+  padding: 8px 16px;
+  background: #fff;
+  font-size: 24rpx;
+  margin-top:5px;
+}
+.column-new .new-top{
+  text-align: right;
+  color: #999;
+}
+.i-tags{
+  margin-right: 10px;
+}
+/* 操作 */
+.column-new .column-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #333;
+  font-size: 26rpx;
+  height: 40px;
+}
+.column-new .column-bottom >view{
+  display: flex;
+  align-items: center;
+}
+.column-bottom .column-bottom_moment image{
+    width: 18px;
+    height: 18px;
+    margin-right: 2px;
+}
+.column-bottom .column-bottom_share button{
+  line-height: 0;
+  border:none !important;
+  display: flex;
+  align-items: center;
+}
+.column-bottom .column-bottom_share text{
+  font-size: 26rpx;
+}
+
+
+/* 图文 */
+.imagetext-box{
+  padding: 5px 0;
+}
+.imagetext-box  .imagetext-box-abstract{
+  width: 100%;
+  display: inline-block;
+  margin: 10px 0;
+  font-size:30rpx;
+  font-weight: 700;
+}
+.imagetext-box  .imagetext-box_info{
+  display:flex;
+  justify-content: space-between;
+}
+.imagetext-box  .imagetext-box_info .info-zy{
+  width: 60%;
+}
+.imagetext-box  .imagetext-box_info .info-img{
+  width: 40%;
+  padding: 0 10px;
+}
+
+.imagetext-box  .imagetext-box-img{
+  width: 100%;
+  max-height: 200rpx;
+}
+
+/* 视频 */
+.video-box .video-title-box {
+  width: 100%;
+  margin-bottom: 10rpx;
+}
+
+.video-box .video-title-box .video-title {
+  width: 100%;
+  display: -webkit-box; 
+  -webkit-box-orient: vertical; 
+  -webkit-line-clamp:2;
+  overflow: hidden;
+  text-overflow:ellipsis;
+}
+
+.video-box .video-image-box {
+  height: 400rpx;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position-x: 30rpx;
+  position: relative;
+}
+
+.video-cover-box{
+  height: 100%;
+  width: 100%;
+  background: #000;
+  text-align: center;
+}
+
+.video-box .video-image-box .video-cover-box .video-image {
+  height: 100%;
+  width: 100%;
+}
+
+.video-box .video {
+  height: 400rpx;
+  width: 100%;
+  margin: 0 30rpx 0 0;
+  position: relative;
+}
+
+.video-box .video-image-box .video-image-play {
+  position: absolute;
+  width: 80rpx;
+  height: 80rpx;
+  top: calc(50% - 40rpx);
+  left: calc(50% - 40rpx);
+  z-index: 100;
+}
+
+
+.tabsFixed{
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+}
+
+/* 海报 */
+.poster{
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  z-index: 2222;
+  background: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+.poster-share{
+  width: 300px;
+  height: 380px;
+  margin:40px auto 20px;
+}
+.poster-tip{
+  background: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  padding: 10px 0;
+  width: 300px;
+  margin: 0 auto;
+  border-radius: 20px;
+  color: #fff;
+  font-size: 30rpx;
+  box-shadow:0 0 2px rgba(255, 255, 255, 0.2);
+}
+.poster-close{
+  position: relative;
+}
+.poster-close .poster-close_dot{
+  width:30px;
+  height: 30px;
+  border-radius: 50%;
+  margin: 10px auto 0;
+  color: #fff;
+  text-align: center;
+  line-height: 30px;
+  font-size: 24rpx;
+  position: relative;
+  border:1px solid #fff;
+}
+
+/* 上拉 刷新元素 */
+.fresh-ele{
+  text-align: center;
+  font-size: 28rpx;
+  line-height: 42px;
+  font-size: 12px;
+}
+
+/* 摘要 */
+.column-Summary{
+  color: #999;
+  margin-bottom: 10rpx;
+}

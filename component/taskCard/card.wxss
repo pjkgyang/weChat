@@ -1,0 +1,68 @@
+/* component/taskCard/card.wxss */
+
+.task-card{
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  padding: 5px 10px;
+  background: #fff;
+  margin-bottom: 5px;
+  border-radius: 4px;
+}
+.task-progress{
+  margin-bottom: 10px;
+  font-size:24rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.task-progress text{
+  color: #999;
+}
+.task-detail{
+   display: flex;
+   align-items: center;
+}
+.task-card .task-image{
+  width: 100rpx !important;
+  height: 100rpx !important;
+  text-align: center;
+  padding-top: 20rpx;
+}
+.task-card .task-image image{
+  width: 30px;
+  height:30px;
+}
+
+/* 信息 */
+.task-card .task-info{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-left:10px;
+  width: calc(100vw - 100rpx) ;
+}
+.task-card .task-info .task-info_intro{
+  color: #999;
+  font-size:22rpx;
+  margin: 5px 0;
+}
+.task-card .task-info .task-info_title{
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+}
+.task-card .task-info .task-info_title text:nth-child(1){
+  font-size: 28rpx;
+}
+.task-card .task-info .task-info_integral{
+  color: #2d8cf0;
+  font-size: 22rpx;
+}
+/* 按钮 */
+.task-btn button{
+  width: 150rpx;
+  height: 50rpx;
+  border-radius: 50rpx;
+  background: rgb(159, 185, 230);
+  font-size: 22rpx;
+  line-height: 50rpx;
+}

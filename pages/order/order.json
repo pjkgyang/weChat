@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "兑换记录",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "i-icon": "../../dist/icon/index",
+    "i-load-more": "../../dist/load-more/index",
+    "empty-content":"../../component/empty/empty",
+    "i-message": "../../dist/message/index"
+  }
+}

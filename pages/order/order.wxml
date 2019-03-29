@@ -1,0 +1,43 @@
+<!--pages/order/order.wxml-->
+<view class='order-page'>
+
+  <view class='order-list' wx:for="{{orderList}}" wx:for-item="item" wx:key="item" wx:for-index="index" 
+  data-item="{{item}}" bindtap='handleCheckOrderDetail'>
+
+    <view class='order-list-top'>
+      <text><text class='title-color999'>商品编号:</text>{{item.Id}}</text>
+      <text>{{item.CommodityState=='1'?'已发货':'待发货'}}</text>
+    </view>
+
+    <view class='order-list-center'>
+    <!-- 商品封面图 -->
+      <view><image src="{{item.CommodityCoverImgUrl}}"></image></view>
+      <view>
+        <view>
+          {{item.CommodityTitle}}
+        </view>
+        <view style='color:#ff9900'>
+          <i-icon type="financial_fill" />
+          <text>{{item.CommodityIntegral}}</text>  
+        </view>
+    </view>
+   </view>
+
+    <view class='order-list-bottom'>
+      <text><text class='title-color999'>快递名称:</text> {{item.ExpressCompany}}</text>   
+      <text><text class='title-color999'>快递单号:</text> {{item.ExpressNum}}</text>    
+    </view>
+
+  </view>
+  <view class="no-more_data" wx:if="{{!loading && !!orderList.length}}">
+      暂无更多记录
+  </view> 
+  <view wx:if="{{loading}}">
+      <i-load-more tip="正在加载"/>
+  </view> 
+  <view wx:if="{{!orderList.length}}">
+    <empty-content></empty-content>
+  </view> 
+
+</view>
+<i-message id="message" />
